@@ -32,16 +32,15 @@ reg [5:0] tmp_hour, tmp_minute, tmp_second;
 /* 2-bit gio trong so cao cua dong ho va bao thuc tam thoi */ reg [3:0] c_hour0,a_hour0;
 /* 4-bit gio trong so thap cua dong ho va bao thuc tam thoi */ reg [3:0] c_min1,a_min1;
 /* 4-bit phut trong so cao cua dong ho va bao thuc tam thoi */ reg [3:0] c_min0,a_min0;
-/* 4-bit phut trong so thap cua dong ho v bao thuc tam thoi */
-
-reg [3:0] c_sec1,a_sec1;
+/* 4-bit phut trong so thap cua dong ho v bao thuc tam thoi */ reg [3:0] c_sec1,a_sec1;
 /* 4-bit giay trong cao thap cua dong ho va bao thuc tam thoi */ reg [3:0] c_sec0,a_sec0;
 /* 4-bit giay trong so thap cua dong ho va bao thuc tam thoi */
 
 
 /*************************************************/
 /*************** TAO XUNG CLOCK 1s****************/
-/*************************************************/ always @(posedge clk or posedge reset)
+/*************************************************/ 
+always @(posedge clk or posedge reset)
 begin if(reset) begin tmp_1s <= 0;
 clk_1s <= 0; end
 else begin
@@ -56,8 +55,8 @@ end
 
 /*************************************************/
 /*************HOAT DONG CUA DONG HO***************/
-/*************************************************/ always @(posedge clk_1s or posedge reset )
-
+/*************************************************/
+always @(posedge clk_1s or posedge reset )
 begin
 if(reset) begin // reset high => gio bao thuc = 00.00.00, Alarm = 0, gio cua H_in,
 M_in, Sec = 00 a_hour1 <= 2'b00; a_hour0 <= 4'b0000; a_min1 <= 4'b0000; a_min0 <= 4'b0000; a_sec1 <= 4'b0000; a_sec0 <= 4'b0000;
